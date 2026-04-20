@@ -34,8 +34,11 @@ class Reseau:
             x = random.randint(0, self.largeur)
             y = random.randint(0, self.hauteur)
 
-            ouverture = random.randint(10, 150)
-            fermeture = ouverture + random.randint(40, 100)
+            dist_depuis_depot = math.sqrt((x - depot.x) ** 2 + (y - depot.y) ** 2)
+
+            ouverture = int(dist_depuis_depot) + random.randint(0,100)
+            largeur_fenetre = random.randint(1500, 4000)
+            fermeture = ouverture + largeur_fenetre
 
             client = Ville(i, x, y, ouverture, fermeture)
             self.villes.append(client)
