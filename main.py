@@ -121,66 +121,65 @@ class Reseau:
         plt.grid(True, linestyle=':', alpha=0.6)
         plt.show()
 
-    def resoudre_heuristique(self):
-        non_visites = [v for v in self.villes if v.index != 0]
-        ville_actuelle = self.villes[0]
-        temps_actuel = 0
-        tournee = [ville_actuelle]
-        distance_totale = 0
+# Logique
 
-        while non_visites:
-            meilleure_ville = None
-            meilleur_temps_arrivee = float('inf')
+def resoudre_heuristique(reseau):
+    non_visites = [v for v in reseau.villes if v.index != 0]
+    ville_actuelle = reseau.villes[0]
+    temps_actuel = 0
+    tournee = [ville_actuelle]
+    distance_totale = 0
 
-            for ville_candidate in non_visites:
-                dist = self.matrice_distances[ville_actuelle.index][ville_candidate.index]
+    while non_visites:
+        meilleure_ville = None
+        meilleur_temps_arrivee = float('inf')
 
-                if dist == float('inf'):
-                    continue
+        for ville_candidate in non_visites:
+            dist = reseau.matrice_distances[ville_actuelle.index][ville_candidate.index]
 
-                temps_arrivee_prevu = temps_actuel + dist
+            if dist == float('inf'):
+                continue
 
-                temps_debut_service = max(temps_arrivee_prevu, ville_candidate.heure_ouverture)
+            temps_arrivee_prevu = temps_actuel + dist
 
-                if temps_debut_service <= ville_candidate.heure_fermeture:
-                    if temps_debut_service < meilleur_temps_arrivee:
-                        meilleur_temps_arrivee = temps_debut_service
-                        meilleure_ville = ville_candidate
+            temps_debut_service = max(temps_arrivee_prevu, ville_candidate.heure_ouverture)
 
-            if meilleure_ville is None:
-                print("L'heuristique est bloquée : Impossible de livrer tout le monde dans les temps.")
-                return None, float('inf'), float('inf')
+            if temps_debut_service <= ville_candidate.heure_fermeture:
+                if temps_debut_service < meilleur_temps_arrivee:
+                    meilleur_temps_arrivee = temps_debut_service
+                    meilleure_ville = ville_candidate
 
-            tournee.append(meilleure_ville)
-            non_visites.remove(meilleure_ville)
-            distance_totale += self.matrice_distances[ville_actuelle.index][meilleure_ville.index]
-            temps_actuel = meilleur_temps_arrivee
-            ville_actuelle = meilleure_ville
-
-        dist_retour = self.matrice_distances[ville_actuelle.index][0]
-        if dist_retour == float('inf'):
-            print("Bloqué à la fin. La route de retour vers le dépôt est barrée.")
+        if meilleure_ville is None:
+            print("L'heuristique est bloquée : Impossible de livrer tout le monde dans les temps.")
             return None, float('inf'), float('inf')
 
-        tournee.append(self.villes[0])
-        distance_totale += dist_retour
-        temps_actuel += dist_retour
+        tournee.append(meilleure_ville)
+        non_visites.remove(meilleure_ville)
+        distance_totale += reseau.matrice_distances[ville_actuelle.index][meilleure_ville.index]
+        temps_actuel = meilleur_temps_arrivee
+        ville_actuelle = meilleure_ville
 
-        return tournee, distance_totale, temps_actuel
+    dist_retour = reseau.matrice_distances[ville_actuelle.index][0]
+    if dist_retour == float('inf'):
+        print("Bloqué à la fin. La route de retour vers le dépôt est barrée.")
+        return None, float('inf'), float('inf')
+
+    tournee.append(reseau.villes[0])
+    distance_totale += dist_retour
+    temps_actuel += dist_retour
+
+    return tournee, distance_totale, temps_actuel
 
 # Phase de test
 # Création d'un petit réseau test
-reseau = Reseau(nb_villes=10, proba_route_barree=0.0)
-reseau.generer_villes()
-reseau.calculer_matrice()
 
-print("Lancement heuristique")
-tournee, distance, temps_final = reseau.resoudre_heuristique()
+if __name__ == "__main__":
+    reseau = Reseau(nb_villes=10, proba_route_barree=0.0)
+    reseau.generer_villes()
+    reseau.calculer_matrice()
 
-if tournee:
-    print("Tournée trouvée avec succès.")
+    resultat = resoudre_heuristique(reseau)
+    tournee, dist, temps = resultat
 
-    chemin = " -> ".join([str(v.index) for v in tournee])
-    print(f"Itineraire : {chemin}")
-    print(f"Distance totale parcourue : {distance:.2f}")
-    print(f"Heure de retour au dépôt : {temps_final:.2f}")
+    if tournee:
+        print(f"Tournée trouvée : Distance: {dist:.2f}")
