@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="495d630f-f86d-4700-bdbc-97b0d418cec1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Livrable_1.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelisation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/modelisation.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Livrable_1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Livrable_1.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +38,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/KazeRequiem/AdemeCesi.git&quot;,
-    &quot;accountId&quot;: &quot;1fb7bbfb-d23f-4300-a7c3-aae49bd14df2&quot;
+    &quot;accountId&quot;: &quot;a456f11a-057f-4a5c-9515-d32526702ce7&quot;
   }
 }</component>
   <component name="McpProjectServerCommands">
@@ -69,9 +68,9 @@
     "ai.playground.ignore.import.keys.banner.in.settings": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "feat/livrable-1-note-book",
+    "git-widget-placeholder": "bibliographie",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "F:/Projet cesi/AdemeCesi",
+    "last_opened_file_path": "C:/Users/ambro/OneDrive/Fichier important/CESI/Génie logiciel/Projet !/Code du projet/AdemeCesi",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -85,7 +84,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-b63d5a1f7c97-b61e75351b1f-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.22158.340" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.32098.74" />
+        <option value="bundled-python-sdk-1cd77e80b48f-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.32098.74" />
       </set>
     </attachedChunks>
   </component>
@@ -103,6 +103,9 @@
       <workItem from="1775544330739" duration="5775000" />
       <workItem from="1775630454475" duration="12726000" />
       <workItem from="1775811106920" duration="3623000" />
+      <workItem from="1776324001791" duration="2146000" />
+      <workItem from="1776667514890" duration="8466000" />
+      <workItem from="1776685367436" duration="1891000" />
     </task>
     <servers />
   </component>
